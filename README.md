@@ -1,17 +1,17 @@
 # data-2-hash [![Build Status](https://travis-ci.org/ghaiklor/data-2-hash.svg)](https://travis-ci.org/ghaiklor/data-2-hash)
 
-Collection of hashing functions for NodeJS and any data
+Collection of hashing functions for any data
 
 ## Getting Started
 
-Install last version of `data-2-hash` by executing
+Install last version of `data-2-hash` by executing:
 
 ```shell
 npm install data-2-hash # Local
 npm install -g data-2-hash # Global (will be available CLI)
 ```
 
-You can require `data-2-hash` in your NodeJS project and use it like this
+You can require `data-2-hash` in your NodeJS project and use it.
 
 ```javascript
 var d2h = require('data-2-hash');
@@ -20,11 +20,12 @@ console.log(d2h.create('short', 'some data here').hash());
 
 ## CLI
 
-If you install `data-2-hash` as globule module, you can use CLI.
+If you install `data-2-hash` as global module, you can use CLI.
 
 ```shell
-data-2-hash bitwise "some data here"
-data-2-hash short "some data here"
+d2h --help
+d2h bitwise "some data here"
+d2h short "some data here"
 ```
 
 ## License
