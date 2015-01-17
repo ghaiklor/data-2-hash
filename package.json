@@ -4,12 +4,13 @@
     "description": "Collection of hashing functions for any data",
     "main": "index.js",
     "keywords": [
-        "bitwise",
         "hash",
-        "shorthash"
+        "bitwise",
+        "shorthash",
+        "cli"
     ],
     "bin": {
-        "data-2-hash": "./bin/d2h.js"
+        "d2h": "./bin/d2h.js"
     },
     "scripts": {
         "test": "mocha"
