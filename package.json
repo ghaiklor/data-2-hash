@@ -1,11 +1,11 @@
 {
-  "name": "data-2-hash",
-  "version": "0.1.0",
-  "description": "Collection of hashing functions for any data",
-  "main": "index.js",
-  "scripts": {
-    "test": "mocha"
-  },
-  "author": "ghaiklor",
-  "license": "MIT"
+    "name": "data-2-hash",
+    "version": "0.1.0",
+    "description": "Collection of hashing functions for any data",
+    "main": "index.js",
+    "scripts": {
+        "test": "mocha"
+    },
+    "author": "ghaiklor",
+    "license": "MIT"
 }
