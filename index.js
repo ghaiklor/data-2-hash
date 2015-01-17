@@ -47,4 +47,4 @@ HashFactory.prototype = Object.create({
     }
 });
 
-module.exports = HashFactory;
+module.exports = new HashFactory();

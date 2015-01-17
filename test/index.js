@@ -1,8 +1,7 @@
 var assert = require('assert'),
     BitwiseHash = require('./../lib/BitwiseHash'),
     ShortHash = require('./../lib/ShortHash'),
-    HashFactory = require('./../index'),
-    hashFactory = new HashFactory();
+    hashFactory = require('./../index');
 
 describe('HashFactory', function () {
     it('Should properly create bitwise hash', function () {
