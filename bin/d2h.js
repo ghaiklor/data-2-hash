@@ -9,14 +9,14 @@ program
     .usage("<hash-function> <data>");
 
 program
-    .command('bitwise [data]')
-    .description('Convert data to 32bit integer via bitwise')
+    .command('bitwise <data>')
+    .description('Hash data to 32bit integer via bitwise')
     .action(function (data) {
         console.log(hashFactory.create('bitwise', data).hash());
     });
 
 program
-    .command('short [data]')
+    .command('short <data>')
     .description('Convert data to short hash string')
     .action(function (data) {
         console.log(hashFactory.create('short', data).hash());
