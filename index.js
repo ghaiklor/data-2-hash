@@ -14,15 +14,15 @@ HashFactory.prototype = Object.create({
     /**
      * Create new hash instance
      * @param {String} type Type of hash
-     * @param {Object} options
+     * @param {Object} data
      * @returns {*}
      */
-    create: function (type, options) {
+    create: function (type, data) {
         switch (type) {
             case 'bitwise':
-                return this.createBitwise(options);
+                return this.createBitwise(data);
             case 'short':
-                return this.createShort(options);
+                return this.createShort(data);
             default:
                 throw new Error('Unrecognized type -> ' + type);
         }
@@ -30,20 +30,20 @@ HashFactory.prototype = Object.create({
 
     /**
      * Create bitwise hashing function
-     * @param {Object} options
+     * @param {Object} data
      * @returns {BitwiseHash}
      */
-    createBitwise: function (options) {
-        return new BitwiseHash(options);
+    createBitwise: function (data) {
+        return new BitwiseHash(data);
     },
 
     /**
      * Create short hashing function
-     * @param {Object} options
+     * @param {Object} data
      * @returns {ShortHash}
      */
-    createShort: function (options) {
-        return new ShortHash(options);
+    createShort: function (data) {
+        return new ShortHash(data);
     }
 });
 
