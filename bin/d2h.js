@@ -17,11 +17,13 @@ program
     .usage("<hash-function> <data>");
 
 program
-    .command('bitwise [data]', 'Convert data to 32bit integer via bitwise')
+    .command('bitwise [data]')
+    .description('Convert data to 32bit integer via bitwise')
     .action(bitwise);
 
 program
-    .command('short [data]', 'Convert data to short string')
+    .command('short [data]')
+    .description('Convert data to short string')
     .action(short);
 
 program.parse(process.argv);
