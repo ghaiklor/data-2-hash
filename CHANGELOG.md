@@ -1,8 +1,9 @@
 # Changelog
 
-## Edge version
+## Version 0.2.0
 
 - Implement CLI for all hashing functions here;
+- Small fixes;
 
 ## Version 0.1.0
 
