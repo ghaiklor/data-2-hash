@@ -23,5 +23,8 @@
     "homepage": "https://github.com/ghaiklor/data-2-hash",
     "devDependencies": {
         "mocha": "^2.1.0"
+    },
+    "dependencies": {
+        "commander": "^2.6.0"
     }
 }
