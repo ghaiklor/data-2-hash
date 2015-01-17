@@ -11,15 +11,15 @@ describe('ShortHash', function () {
         var hash;
 
         hash = new ShortHash('some data');
-        console.log(hash.hash());
+        assert.equal(hash.hash(), 'ZEreuu', 'Should properly hash string');
 
         hash.setData(['some', 'data']);
-        console.log(hash.hash());
+        assert.equal(hash.hash(), 'ZErJJJ', 'Should properly hash array');
 
         hash.setData({
             foo: 'bar',
             bar: 'foo'
         });
-        console.log(hash.hash());
+        assert.equal(hash.hash(), 'ZwY8Iaa', 'Should properly hash object');
     });
 });
