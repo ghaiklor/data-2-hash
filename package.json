@@ -9,7 +9,7 @@
         "shorthash"
     ],
     "bin": {
-        "data-2-hash": "./bin/index.js"
+        "data-2-hash": "./bin/d2h.js"
     },
     "scripts": {
         "test": "mocha"
