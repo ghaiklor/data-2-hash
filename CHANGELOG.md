@@ -3,4 +3,4 @@
 ## Edge version
 
 - Implement base hashing class for extending;
-- Create short hashing function;
+- Implement bitwise hash function;
