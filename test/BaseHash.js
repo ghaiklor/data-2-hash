@@ -8,15 +8,8 @@ describe('BaseHash', function () {
     });
 
     it('Should create base instance with params', function () {
-        var hash;
-
-        hash = new BaseHash('some data');
+        var hash = new BaseHash('some data');
         assert.equal(hash._data, 'some data', 'Should properly set data');
-
-        hash = new BaseHash({
-            data: 'some data 2'
-        });
-        assert.equal(hash._data, 'some data 2', 'Should properly set data via object param');
     });
 
     it('Should properly get/set data', function () {
@@ -26,4 +19,12 @@ describe('BaseHash', function () {
         hash.setData('another data');
         assert.equal(hash.getData(), 'another data', 'Should properly set data');
     });
+
+    it('Should properly check if data exists', function () {
+        var hash = new BaseHash();
+        assert.equal(hash.isDataExists(), false, 'Should properly check that data is not exists');
+
+        hash.setData('some data');
+        assert.equal(hash.isDataExists(), true, 'Should properly check that data is exists');
+    })
 });
