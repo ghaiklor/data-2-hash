@@ -8,10 +8,9 @@ describe('Adler32Hash', function () {
     });
 
     it('Should properly hash data', function () {
-        var hash = new Adler32Hash('some data');
+        var hash = new Adler32Hash();
 
-        //hash.setData('some data');
-        console.log(hash.hash());
-        assert.equal(hash.hash(), '1181036f', 'Should properly hash string');
+        hash.setData('some data');
+        assert.equal(hash.hash(), '293667695', 'Should properly hash string');
     });
 });
