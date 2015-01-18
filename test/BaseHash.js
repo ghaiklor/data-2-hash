@@ -19,12 +19,4 @@ describe('BaseHash', function () {
         hash.setData('another data');
         assert.equal(hash.getData(), 'another data', 'Should properly set data');
     });
-
-    it('Should properly check if data exists', function () {
-        var hash = new BaseHash();
-        assert.equal(hash.isDataExists(), false, 'Should properly check that data is not exists');
-
-        hash.setData('some data');
-        assert.equal(hash.isDataExists(), true, 'Should properly check that data is exists');
-    })
 });
