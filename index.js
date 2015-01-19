@@ -1,38 +1,65 @@
 var crypto = require('crypto');
 
 /**
- * Hash factory for hash functions
+ * List of hashes that crypto is supports
+ * @type {String}
+ * @private
+ */
+var SUPPORTED_HASHES = crypto.getHashes();
+
+/**
+ * Hash class
+ * @param {String} algorithm Algorithm that hashing data
  * @constructor
  */
-function HashFactory() {
+function Hash(algorithm) {
+    if (SUPPORTED_HASHES.indexOf(algorithm) === -1) {
+        throw new Error('Unsupported algorithm');
+    }
+
+    this._setHash(crypto.createHash(algorithm));
 }
 
-HashFactory.prototype = Object.create({
-    constructor: HashFactory,
+Hash.prototype = Object.create({
+    constructor: Hash,
 
     /**
-     * Create new hash instance
-     * @param {String} type Type of hash
-     * @param {Object} data
-     * @returns {*}
+     * Get current crypto hash instance
+     * @returns {crypto|*}
+     * @private
      */
-    create: function (type, data) {
-        switch (type) {
-            case 'short':
-                return this.createShort(data);
-            default:
-                throw new Error('Unrecognized type -> ' + type);
-        }
+    _getHash: function () {
+        return this._hash;
     },
 
     /**
-     * Create short hashing function
-     * @param {Object} data
-     * @returns {ShortHash}
+     * Set crypto hash instance
+     * @param {crypto} hash
+     * @returns {Hash}
+     * @private
      */
-    createShort: function (data) {
-        return new ShortHash(data);
+    _setHash: function (hash) {
+        this._hash = hash;
+        return this;
+    },
+
+    /**
+     * Update data in crypto hash
+     * @param data
+     * @returns {Hash}
+     */
+    update: function (data) {
+        this._getHash().update(data);
+        return this;
+    },
+
+    /**
+     * Calculate hash
+     * @returns {String}
+     */
+    digest: function () {
+        return this._getHash().digest('hex');
     }
 });
 
-module.exports = new HashFactory();
+module.exports = Hash;
