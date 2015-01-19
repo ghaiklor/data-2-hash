@@ -31,6 +31,7 @@ function Hash(algorithm, data) {
     if (fs.existsSync(data) && fs.lstatSync(data).isFile()) {
         var stream = fs.createReadStream(data);
         stream.on('data', function (data) {
+            // FIXME: callback when hash is updated
             this.update(data);
         }.bind(this));
     } else if (data) {
