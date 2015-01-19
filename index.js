@@ -22,7 +22,7 @@ var CUSTOM_SUPPORTED_HASHES = [];
  * @constructor
  */
 function Hash(algorithm, data) {
-    if (CRYPTO_SUPPORTED_HASHES.indexOf(algorithm) === -1 || CUSTOM_SUPPORTED_HASHES.indexOf(algorithm) === -1) {
+    if (CRYPTO_SUPPORTED_HASHES.indexOf(algorithm) === -1 && CUSTOM_SUPPORTED_HASHES.indexOf(algorithm) === -1) {
         throw new Error('Unsupported algorithm');
     }
 
