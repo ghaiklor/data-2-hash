@@ -1,25 +1,12 @@
 #!/usr/bin/env node
 
 var program = require('commander'),
-    hashFactory = require('./../index'),
+    Hash = require('./../index'),
     pkg = require('./../package.json');
 
 program
     .version(pkg.version)
-    .usage("<hash-function> <data>");
+    .usage("<hash-function> <data>")
+    .parse(process.argv);
 
-program
-    .command('bitwise <data>')
-    .description('Hash data to 32bit integer via bitwise')
-    .action(function (data) {
-        console.log(hashFactory.create('bitwise', data).hash());
-    });
-
-program
-    .command('short <data>')
-    .description('Convert data to short hash string')
-    .action(function (data) {
-        console.log(hashFactory.create('short', data).hash());
-    });
-
-program.parse(process.argv);
+console.log(new Hash(program.args[0]).update(program.args[1]).digest());
