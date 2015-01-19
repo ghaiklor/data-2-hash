@@ -1,11 +1,19 @@
-var crypto = require('crypto');
+var crypto = require('crypto'),
+    fs = require('fs');
 
 /**
  * List of hashes that crypto is supports
- * @type {String}
+ * @type {Array}
  * @private
  */
-var SUPPORTED_HASHES = crypto.getHashes();
+var CRYPTO_SUPPORTED_HASHES = crypto.getHashes();
+
+/**
+ * List of hashes that implemented on my own
+ * @type {Array}
+ * @private
+ */
+var CUSTOM_SUPPORTED_HASHES = [];
 
 /**
  * Hash class
@@ -14,13 +22,18 @@ var SUPPORTED_HASHES = crypto.getHashes();
  * @constructor
  */
 function Hash(algorithm, data) {
-    if (SUPPORTED_HASHES.indexOf(algorithm) === -1) {
+    if (CRYPTO_SUPPORTED_HASHES.indexOf(algorithm) === -1 || CUSTOM_SUPPORTED_HASHES.indexOf(algorithm) === -1) {
         throw new Error('Unsupported algorithm');
     }
 
     this._setHash(crypto.createHash(algorithm));
 
-    if (data) {
+    if (fs.existsSync(data) && fs.lstatSync(data).isFile()) {
+        var stream = fs.createReadStream(data);
+        stream.on('data', function (data) {
+            this.update(data);
+        }.bind(this));
+    } else if (data) {
         this.update(data);
     }
 }
@@ -66,5 +79,11 @@ Hash.prototype = Object.create({
         return this._getHash().digest('hex');
     }
 });
+
+/**
+ * List of supported hashes
+ * @type {Array<String>}
+ */
+Hash.SUPPORTED_HASHES = CRYPTO_SUPPORTED_HASHES.concat(CUSTOM_SUPPORTED_HASHES);
 
 module.exports = Hash;
