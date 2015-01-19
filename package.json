@@ -1,13 +1,12 @@
 {
     "name": "data-2-hash",
-    "version": "0.2.0",
-    "description": "Collection of hashing functions for any data",
+    "version": "1.0.0",
+    "description": "CLI for crypto module",
     "main": "index.js",
     "keywords": [
-        "hash",
-        "bitwise",
-        "shorthash",
-        "cli"
+        "cli",
+        "crypto",
+        "hash"
     ],
     "bin": {
         "d2h": "./bin/d2h.js"

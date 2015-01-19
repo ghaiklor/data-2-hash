@@ -1,6 +1,6 @@
 # data-2-hash [![npm version](https://badge.fury.io/js/data-2-hash.svg)](http://badge.fury.io/js/data-2-hash) [![Build Status](https://travis-ci.org/ghaiklor/data-2-hash.svg)](https://travis-ci.org/ghaiklor/data-2-hash)
 
-Collection of hashing functions for any data
+CLI interface for `crypto` module.
 
 ## Getting Started
 
@@ -14,8 +14,8 @@ npm install -g data-2-hash # Global (will be available CLI)
 You can require `data-2-hash` in your NodeJS project and use it.
 
 ```javascript
-var d2h = require('data-2-hash');
-console.log(d2h.create('short', 'some data here').hash());
+var Hash = require('data-2-hash');
+console.log(new Hash('md5', 'test').digest());
 ```
 
 ## CLI
@@ -24,8 +24,6 @@ If you install `data-2-hash` as global module, you can use CLI.
 
 ```shell
 d2h --help
-d2h bitwise "some data here"
-d2h short "some data here"
 ```
 
 ## License

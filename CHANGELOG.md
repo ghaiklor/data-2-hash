@@ -1,8 +1,9 @@
 # Changelog
 
-## Edge version
+## Version 1.0.0
 
 - Remove all JS hashing function which was before;
+- Create CLI interface for `crypto` module;
 
 ## Version 0.2.0
 

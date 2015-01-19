@@ -10,14 +10,19 @@ var SUPPORTED_HASHES = crypto.getHashes();
 /**
  * Hash class
  * @param {String} algorithm Algorithm that hashing data
+ * @param {*} [data] Data to hash
  * @constructor
  */
-function Hash(algorithm) {
+function Hash(algorithm, data) {
     if (SUPPORTED_HASHES.indexOf(algorithm) === -1) {
         throw new Error('Unsupported algorithm');
     }
 
     this._setHash(crypto.createHash(algorithm));
+
+    if (data) {
+        this.update(data);
+    }
 }
 
 Hash.prototype = Object.create({
