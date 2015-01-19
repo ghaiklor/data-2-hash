@@ -1,5 +1,9 @@
 # Changelog
 
+## Edge version
+
+- Remove all JS hashing function which was before;
+
 ## Version 0.2.0
 
 - Implement CLI for all hashing functions here;

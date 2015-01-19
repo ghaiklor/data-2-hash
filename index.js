@@ -1,4 +1,4 @@
-var ShortHash = require('./lib/ShortHash');
+var crypto = require('crypto');
 
 /**
  * Hash factory for hash functions
