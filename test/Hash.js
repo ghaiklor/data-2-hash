@@ -34,8 +34,8 @@ describe('Hash', function () {
     });
 
     it('Should properly digest file', function (done) {
-        new Hash('sha1', 'README.md', true).on('done', function (digest) {
-            assert.equal(digest, '0037eb52bd2f103647904681da256590ca3436f0');
+        new Hash('sha1', 'LICENSE', true).on('done', function (digest) {
+            assert.equal(digest, 'ac90363e76a56d55aa5113463f78e65aa8c76d79');
             done();
         });
     });
