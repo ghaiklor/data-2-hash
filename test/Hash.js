@@ -37,6 +37,6 @@ describe('Hash', function () {
         new Hash('sha1', 'README.md', true).on('done', function (digest) {
             assert.equal(digest, '0037eb52bd2f103647904681da256590ca3436f0');
             done();
-        })
+        });
     });
 });
