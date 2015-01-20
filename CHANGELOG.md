@@ -1,6 +1,9 @@
 # Changelog
 
-## Edge version
+## Version 1.0.0
+
+- Fix bug with hashing file;
+- Improve CLI to work with Hash;
 
 ## Version 0.3.0
 
