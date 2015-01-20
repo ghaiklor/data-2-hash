@@ -14,30 +14,34 @@ var SUPPORTED_HASHES = crypto.getHashes();
 
 /**
  * Hash class
- * @param {String} algorithm Algorithm that hashing data
- * @param {*} [data] Data to hash
+ * @param {String} algorithm Algorithm that hash data
+ * @param {String} [data] Data to hash
+ * @param {Boolean} [isFile] If data it's file location then should be true
  * @constructor
  */
-function Hash(algorithm, data) {
+function Hash(algorithm, data, isFile) {
     EventEmitter.apply(this, arguments);
 
     if (SUPPORTED_HASHES.indexOf(algorithm) === -1) {
-        return this.emit("error", "Unsupported algorithm")
+        throw new Error("Unsupported algorithm");
     }
 
     this._setHash(crypto.createHash(algorithm));
 
-    if (fs.existsSync(data) && fs.lstatSync(data).isFile()) {
-        var stream = fs.createReadStream(data);
-        stream.on('data', function (data) {
-            this.update(data);
-        }.bind(this));
-        stream.on('end', function () {
-            this.emit('done', this.digest());
-        }.bind(this));
+    if (isFile) {
+        if (!(fs.existsSync(data) && fs.lstatSync(data).isFile())) {
+            throw new Error("File not exists");
+        }
+
+        fs.createReadStream(data)
+            .on('data', function (data) {
+                this.update(data);
+            }.bind(this))
+            .on('end', function () {
+                this.emit('done', this.digest());
+            }.bind(this));
     } else if (data) {
         this.update(data);
-        this.emit('done', this.digest());
     }
 }
 

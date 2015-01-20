@@ -6,18 +6,20 @@ var program = require('commander'),
 
 program
     .version(pkg.version)
-    .usage("<hash-function> <data>")
+    .usage("[options] <hash-function> <data>")
     .option('-l, --list', 'Print all available hashing functions')
+    .option('-f, --file', 'Hash file')
+    .option('-t, --text', 'Hash text')
     .parse(process.argv);
 
 if (!!program.list) {
     Hash.SUPPORTED_HASHES.forEach(function (hash) {
         console.log(hash);
     });
+} else if (!!program.file) {
+    new Hash(program.args[0], program.args[1], true).on('done', function (hash) {
+        console.log(hash);
+    });
 } else {
-    new Hash(program.args[0], program.args[1])
-        .on('done', function (hash) {
-            console.log(hash);
-        })
-        .on('error', console.error);
+    console.log(new Hash(program.args[0], program.args[1]).digest());
 }
