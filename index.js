@@ -1,19 +1,16 @@
 var crypto = require('crypto'),
-    fs = require('fs');
+    fs = require('fs'),
+    util = require('util'),
+    EventEmitter = require('events').EventEmitter;
+
+util.inherits(Hash, EventEmitter);
 
 /**
  * List of hashes that crypto is supports
  * @type {Array}
  * @private
  */
-var CRYPTO_SUPPORTED_HASHES = crypto.getHashes();
-
-/**
- * List of hashes that implemented on my own
- * @type {Array}
- * @private
- */
-var CUSTOM_SUPPORTED_HASHES = [];
+var SUPPORTED_HASHES = crypto.getHashes();
 
 /**
  * Hash class
@@ -22,8 +19,10 @@ var CUSTOM_SUPPORTED_HASHES = [];
  * @constructor
  */
 function Hash(algorithm, data) {
-    if (CRYPTO_SUPPORTED_HASHES.indexOf(algorithm) === -1 && CUSTOM_SUPPORTED_HASHES.indexOf(algorithm) === -1) {
-        throw new Error('Unsupported algorithm');
+    EventEmitter.apply(this, arguments);
+
+    if (SUPPORTED_HASHES.indexOf(algorithm) === -1) {
+        return this.emit("error", "Unsupported algorithm")
     }
 
     this._setHash(crypto.createHash(algorithm));
@@ -31,60 +30,59 @@ function Hash(algorithm, data) {
     if (fs.existsSync(data) && fs.lstatSync(data).isFile()) {
         var stream = fs.createReadStream(data);
         stream.on('data', function (data) {
-            // FIXME: callback when hash is updated
             this.update(data);
+        }.bind(this));
+        stream.on('end', function () {
+            this.emit('done', this.digest());
         }.bind(this));
     } else if (data) {
         this.update(data);
+        this.emit('done', this.digest());
     }
 }
 
-Hash.prototype = Object.create({
-    constructor: Hash,
+/**
+ * Get current crypto hash instance
+ * @returns {crypto|*}
+ * @private
+ */
+Hash.prototype._getHash = function () {
+    return this._hash;
+};
 
-    /**
-     * Get current crypto hash instance
-     * @returns {crypto|*}
-     * @private
-     */
-    _getHash: function () {
-        return this._hash;
-    },
+/**
+ * Set crypto hash instance
+ * @param {crypto} hash
+ * @returns {Hash}
+ * @private
+ */
+Hash.prototype._setHash = function (hash) {
+    this._hash = hash;
+    return this;
+};
 
-    /**
-     * Set crypto hash instance
-     * @param {crypto} hash
-     * @returns {Hash}
-     * @private
-     */
-    _setHash: function (hash) {
-        this._hash = hash;
-        return this;
-    },
+/**
+ * Update data in crypto hash
+ * @param data
+ * @returns {Hash}
+ */
+Hash.prototype.update = function (data) {
+    this._getHash().update(data);
+    return this;
+};
 
-    /**
-     * Update data in crypto hash
-     * @param data
-     * @returns {Hash}
-     */
-    update: function (data) {
-        this._getHash().update(data);
-        return this;
-    },
-
-    /**
-     * Calculate hash
-     * @returns {String}
-     */
-    digest: function () {
-        return this._getHash().digest('hex');
-    }
-});
+/**
+ * Calculate hash
+ * @returns {String}
+ */
+Hash.prototype.digest = function () {
+    return this._getHash().digest('hex');
+};
 
 /**
  * List of supported hashes
  * @type {Array<String>}
  */
-Hash.SUPPORTED_HASHES = CRYPTO_SUPPORTED_HASHES.concat(CUSTOM_SUPPORTED_HASHES);
+Hash.SUPPORTED_HASHES = SUPPORTED_HASHES;
 
 module.exports = Hash;

@@ -15,5 +15,9 @@ if (!!program.list) {
         console.log(hash);
     });
 } else {
-    console.log(new Hash(program.args[0], program.args[1]).digest());
+    new Hash(program.args[0], program.args[1])
+        .on('done', function (hash) {
+            console.log(hash);
+        })
+        .on('error', console.error);
 }
