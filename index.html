@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640">
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen">
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>data-2-hash by ghaiklor</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/ghaiklor/data-2-hash">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>data-2-hash</h1>
+            <h2>CLI for crypto module</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/ghaiklor/data-2-hash/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/ghaiklor/data-2-hash/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <h1>
+<a id="data-2-hash--" class="anchor" href="#data-2-hash--" aria-hidden="true"><span class="octicon octicon-link"></span></a>data-2-hash <a href="http://badge.fury.io/js/data-2-hash"><img src="https://badge.fury.io/js/data-2-hash.svg" alt="npm version"></a> <a href="https://travis-ci.org/ghaiklor/data-2-hash"><img src="https://travis-ci.org/ghaiklor/data-2-hash.svg" alt="Build Status"></a>
+</h1>
+
+<p>The main approach of this module is CLI interface for <code>crypto</code>. But you can include it and use as another module.</p>
+
+<h2>
+<a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting Started</h2>
+
+<p>Install last version of <code>data-2-hash</code> by executing:</p>
+
+<div class="highlight highlight-shell"><pre>npm install data-2-hash --save <span class="pl-c"># Local</span>
+npm install -g data-2-hash <span class="pl-c"># Global (will be available CLI)</span></pre></div>
+
+<p>You can require <code>data-2-hash</code> in your NodeJS project and use it.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s">var</span> Hash <span class="pl-k">=</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>data-2-hash<span class="pl-pds">'</span></span>);
+
+<span class="pl-c">// Create empty hash instance</span>
+<span class="pl-s">var</span> shasum <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Hash</span>(<span class="pl-s1"><span class="pl-pds">'</span>sha<span class="pl-pds">'</span></span>);
+<span class="pl-en">console</span><span class="pl-s3">.log</span>(shasum.update(<span class="pl-s1"><span class="pl-pds">'</span>test<span class="pl-pds">'</span></span>).digest());
+
+<span class="pl-c">// Create hash instance with predefined data</span>
+<span class="pl-en">console</span><span class="pl-s3">.log</span>(<span class="pl-k">new</span> <span class="pl-en">Hash</span>(<span class="pl-s1"><span class="pl-pds">'</span>md5<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>test<span class="pl-pds">'</span></span>).digest());
+
+<span class="pl-c">// Calculate hash for some file</span>
+<span class="pl-k">new</span> <span class="pl-en">Hash</span>(<span class="pl-s1"><span class="pl-pds">'</span>md5<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>file.md<span class="pl-pds">'</span></span>, <span class="pl-c1">true</span>).on(<span class="pl-s1"><span class="pl-pds">'</span>done<span class="pl-pds">'</span></span>, <span class="pl-st">function</span>(<span class="pl-vpf">digest</span>) {
+    <span class="pl-en">console</span><span class="pl-s3">.log</span>(digest);
+});</pre></div>
+
+<h2>
+<a id="cli" class="anchor" href="#cli" aria-hidden="true"><span class="octicon octicon-link"></span></a>CLI</h2>
+
+<p>If you install <code>data-2-hash</code> as global module, you can use CLI.</p>
+
+<div class="highlight highlight-shell"><pre>d2h --help <span class="pl-c"># Usage</span>
+d2h --list <span class="pl-c"># Print all supported hashes</span></pre></div>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>The MIT License (MIT)</p>
+
+<p>Copyright (c) 2015 Eugene Obrezkov</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</p>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/ghaiklor">ghaiklor</a> can be found on <a href="https://github.com/ghaiklor/data-2-hash">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
