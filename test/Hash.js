@@ -1,9 +1,9 @@
 var assert = require('assert'),
-    Hash = require('./../index');
+    Hash = require('../');
 
 describe('Hash', function () {
     it('Should create empty Hash instance', function () {
-        var hash = new Hash('sha1');
+        var hash = new Hash('sha');
         assert(hash instanceof Hash, 'Should be instance of Hash');
     });
 
@@ -38,5 +38,15 @@ describe('Hash', function () {
             assert.equal(digest, 'ac90363e76a56d55aa5113463f78e65aa8c76d79');
             done();
         });
+    });
+
+    it('Should properly throws exceptions', function () {
+        assert.throws(function () {
+            new Hash('wrong-hash-bla-bla');
+        }, Error);
+
+        assert.throws(function () {
+            new Hash('sha', 'But file is not exists', true);
+        }, Error);
     });
 });
