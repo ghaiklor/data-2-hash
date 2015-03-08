@@ -1,4 +1,6 @@
-# data-2-hash [![npm version](https://badge.fury.io/js/data-2-hash.svg)](http://badge.fury.io/js/data-2-hash) [![Build Status](https://travis-ci.org/ghaiklor/data-2-hash.svg)](https://travis-ci.org/ghaiklor/data-2-hash)
+# data-2-hash
+
+![Build Status](https://img.shields.io/travis/ghaiklor/data-2-hash.svg) ![Coverage](https://img.shields.io/coveralls/ghaiklor/data-2-hash.svg) ![Downloads](https://img.shields.io/npm/dm/data-2-hash.svg) ![npm version](https://img.shields.io/npm/v/data-2-hash.svg) ![dependencies](https://img.shields.io/david/ghaiklor/data-2-hash.svg) ![dev dependencies](https://img.shields.io/david/dev/ghaiklor/data-2-hash.svg) ![License](https://img.shields.io/npm/l/data-2-hash.svg)
 
 The main approach of this module is CLI interface for `crypto`. But you can include it and use as another module.
 
