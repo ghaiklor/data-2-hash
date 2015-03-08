@@ -38,7 +38,7 @@ new Hash('md5', 'file.md', true).on('done', function(digest) {
 If you install `data-2-hash` as global module, you can use CLI.
 
 ```shell
-d2h --help # Usage
+$ d2h --help # Usage
 
 Usage: d2h <hash-function> <data> [options]
 
@@ -49,12 +49,12 @@ Options:
   -l, --list     Print all available hash functions
   -f, --file     Execute hashing of file
 
-d2h --list # Print all supported hashes
+$ d2h --list # Print all supported hashes
 
-d2h md5 password # Hash 'test' in md5
+$ d2h md5 password # Hash 'password' in md5
 5f4dcc3b5aa765d61d8327deb882cf99
 
-d2h sha LICENSE --file
+$ d2h sha LICENSE --file
 Calculating...
 30ea61d5032533ce8605197b7a2c8d958afede54
 ```
