@@ -2,7 +2,9 @@
 
 ![Build Status](https://img.shields.io/travis/ghaiklor/data-2-hash.svg) ![Coverage](https://img.shields.io/coveralls/ghaiklor/data-2-hash.svg) ![Downloads](https://img.shields.io/npm/dm/data-2-hash.svg) ![npm version](https://img.shields.io/npm/v/data-2-hash.svg) ![dependencies](https://img.shields.io/david/ghaiklor/data-2-hash.svg) ![dev dependencies](https://img.shields.io/david/dev/ghaiklor/data-2-hash.svg) ![License](https://img.shields.io/npm/l/data-2-hash.svg)
 
-The main approach of this module is CLI interface for `crypto`. But you can include it and use as another module.
+The main approach of this module is CLI interface for `crypto`.
+
+But it also provide a tiny wrapper for `crypto` so you can use crypto a little bit easier.
 
 ## Getting Started
 
@@ -37,7 +39,24 @@ If you install `data-2-hash` as global module, you can use CLI.
 
 ```shell
 d2h --help # Usage
+
+Usage: d2h <hash-function> <data> [options]
+
+Options:
+
+  -h, --help     output usage information
+  -V, --version  output the version number
+  -l, --list     Print all available hash functions
+  -f, --file     Execute hashing of file
+
 d2h --list # Print all supported hashes
+
+d2h md5 password # Hash 'test' in md5
+5f4dcc3b5aa765d61d8327deb882cf99
+
+d2h sha LICENSE --file
+Calculating...
+30ea61d5032533ce8605197b7a2c8d958afede54
 ```
 
 ## License
