@@ -1,18 +1,20 @@
 {
     "name": "data-2-hash",
     "version": "1.1.0",
-    "description": "CLI for crypto module where you can call crypto functions from console",
+    "description": "Tiny wrapper for crypto and CLI where you can call crypto functions from console",
     "main": "index.js",
     "keywords": [
-        "cli",
         "crypto",
+        "cli",
+        "wrapper",
         "hash"
     ],
     "bin": {
         "d2h": "./bin/d2h.js"
     },
     "scripts": {
-        "test": "node ./node_modules/.bin/istanbul cover --report lcovonly ./node_modules/.bin/_mocha -- --recursive --reporter spec"
+        "test": "node ./node_modules/.bin/istanbul cover --report lcovonly ./node_modules/.bin/_mocha -- --recursive --reporter spec",
+        "prepublish": "npm test"
     },
     "repository": {
         "type": "git",
