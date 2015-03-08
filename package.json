@@ -1,7 +1,7 @@
 {
     "name": "data-2-hash",
     "version": "1.0.0",
-    "description": "CLI for crypto module",
+    "description": "CLI for crypto module where you can call crypto functions from console",
     "main": "index.js",
     "keywords": [
         "cli",
@@ -12,7 +12,7 @@
         "d2h": "./bin/d2h.js"
     },
     "scripts": {
-        "test": "mocha"
+        "test": "node ./node_modules/.bin/istanbul cover --report lcovonly ./node_modules/.bin/_mocha -- --recursive --reporter spec"
     },
     "repository": {
         "type": "git",
@@ -25,6 +25,7 @@
     },
     "homepage": "https://github.com/ghaiklor/data-2-hash",
     "devDependencies": {
+        "istanbul": "^0.3.7",
         "mocha": "^2.1.0"
     },
     "dependencies": {
