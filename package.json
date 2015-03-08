@@ -29,6 +29,7 @@
         "mocha": "^2.1.0"
     },
     "dependencies": {
+        "chalk": "^1.0.0",
         "commander": "^2.6.0"
     }
 }

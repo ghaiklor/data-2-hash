@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 1.1.0
+
+- Add examples to hash list;
+- Add coverage tool;
+
 ## Version 1.0.0
 
 - Fix bug with hashing file;
