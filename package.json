@@ -1,38 +1,41 @@
 {
-    "name": "data-2-hash",
-    "version": "1.1.0",
-    "description": "Tiny wrapper for crypto and CLI where you can call crypto functions from console",
-    "main": "index.js",
-    "keywords": [
-        "crypto",
-        "cli",
-        "wrapper",
-        "hash",
-        "file"
-    ],
-    "bin": {
-        "d2h": "./bin/d2h.js"
-    },
-    "scripts": {
-        "test": "node ./node_modules/.bin/istanbul cover --report lcovonly ./node_modules/.bin/_mocha -- --recursive --reporter spec",
-        "prepublish": "npm test"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/ghaiklor/data-2-hash.git"
-    },
-    "author": "ghaiklor",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/ghaiklor/data-2-hash/issues"
-    },
-    "homepage": "https://github.com/ghaiklor/data-2-hash",
-    "devDependencies": {
-        "istanbul": "^0.3.7",
-        "mocha": "^2.1.0"
-    },
-    "dependencies": {
-        "chalk": "^1.0.0",
-        "commander": "^2.6.0"
-    }
+  "name": "data-2-hash",
+  "version": "1.2.0",
+  "description": "Tiny wrapper for crypto and CLI where you can call crypto functions from console",
+  "main": "index.js",
+  "keywords": [
+    "crypto",
+    "cli",
+    "wrapper",
+    "hash",
+    "file"
+  ],
+  "bin": {
+    "d2h": "./bin/d2h.js"
+  },
+  "scripts": {
+    "test": "istanbul cover _mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ghaiklor/data-2-hash.git"
+  },
+  "author": {
+    "name": "Eugene Obrezkov",
+    "email": "ghaiklor@gmail.com",
+    "url": "https://github.com/ghaiklor"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ghaiklor/data-2-hash/issues"
+  },
+  "homepage": "https://github.com/ghaiklor/data-2-hash",
+  "devDependencies": {
+    "istanbul": "^0.3.7",
+    "mocha": "^2.1.0"
+  },
+  "dependencies": {
+    "chalk": "^1.0.0",
+    "commander": "^2.6.0"
+  }
 }

@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.2.0
+
+- Just code styling;
+
 ## Version 1.1.0
 
 - Add examples to hash list;
